@@ -1,25 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from './context/OrderContext';
+import EnterYourDetails from './components/EnterYourDetails';
+import ChooseYourPizza from './components/ChooseYourPizza';
+import OrderSummary from './components/OrderSummary';
+import styled from 'styled-components';
+
+const Layout = styled.div`
+  padding: 20px 30px;
+`;
+
+const PlaceOrderButton = styled.button`
+  border: 0;
+  outline: 0;
+  background: lightgray;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 15px;
+  width: 100%;
+  color: white;
+  &:hover {
+    background: gray;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider>
+      <Layout>
+        <EnterYourDetails />
+        <ChooseYourPizza />
+        <OrderSummary />
+        <PlaceOrderButton>Place order</PlaceOrderButton>
+      </Layout>
+    </Provider>
   );
 }
 
